@@ -1,5 +1,6 @@
 
 
+
 const nowList = document.getElementById("now-list");
 const projectsList = document.getElementById("projects-list");
 const goalsList = document.getElementById("goals-list");
@@ -21,3 +22,219 @@ const youtubeButton = document.getElementById("youtube-button");
 const githubButton = document.getElementById("github-button");
 
 
+
+const currentActivities = [
+  "Learning JavaScript",
+  "Building my portfolio",
+  "Practicing Git and GitHub"
+];
+
+
+
+const projects = [
+  {
+    title: "Code Quest Arcade",
+    description: "A retro JavaScript trivia game.",
+    status: "In progress",
+    technology: "JavaScript, Express, SQLite"
+  },
+  {
+    title: "Mimic to Mastery",
+    description: "My personal coding and storytelling website.",
+    status: "Building",
+    technology: "HTML, CSS, JavaScript"
+  },
+  {
+    title: "ADHD Flip Cards",
+    description: "Interactive cards for learning about ADHD traits.",
+    status: "Practice project",
+    technology: "HTML, CSS, JavaScript"
+  }
+];
+
+
+const goals = [
+  {
+    text: "Finish my portfolio website",
+    completed: false
+  },
+  {
+    text: "Build stronger JavaScript skills",
+    completed: false
+  },
+  {
+    text: "Publish projects on GitHub",
+    completed: false
+  },
+  {
+    text: "Land my first developer job",
+    completed: false
+  }
+];
+
+
+
+const lessons = [
+  {
+    topic: "HTML",
+    takeaway: "HTML gives a webpage its structure."
+  },
+  {
+    topic: "CSS",
+    takeaway: "CSS controls how a webpage looks."
+  },
+  {
+    topic: "JavaScript",
+    takeaway: "JavaScript adds behavior and interaction."
+  }
+];
+
+
+
+
+const socials = [
+  {
+    name: "GitHub",
+    url: "https://github.com/MimictoMastery"
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/"
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/"
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/"
+  }
+];
+
+
+
+
+const posts = [
+  {
+    title: "My Journey from Mimicry to Mastery",
+    date: "October 2026",
+    category: "My Story",
+    body: [
+      "Learning to code as an adult means learning new skills one step at a time.",
+      "Every mistake is an opportunity to understand something better. Every commit is proof that I kept going.",
+      "This is where I share my progress, my projects, and the lessons I learn along the way."
+    ]
+  },
+  {
+    title: "Learning to Code with ADHD",
+    date: "October 2026",
+    category: "Learning",
+    body: [
+      "Learning something new can feel overwhelming when there are so many things to remember.",
+      "Breaking a project into smaller steps helps me focus on one idea at a time.",
+      "I do not have to learn everything today. I just have to keep moving forward."
+    ]
+  },
+  {
+    title: "Stories, Appalachia, and Technology",
+    date: "October 2026",
+    category: "Appalachian Roots",
+    body: [
+      "Before I started learning to code, storytelling was already part of my life.",
+      "Storytelling and programming both involve organizing ideas, solving problems, and helping people understand something."
+    ]
+  }
+];
+
+
+function createElement(tagName, className, text) {
+  const element = document.createElement(tagName);
+
+  if (className) {
+    element.className = className;
+  }
+
+  if (text !== undefined) {
+    element.textContent = text;
+  }
+
+  return element;
+}
+
+
+
+
+function renderActivities() {
+  currentActivities.forEach(function(activity) {
+    const item = createElement("li", "", activity);
+    nowList.appendChild(item);
+  });
+}
+
+
+
+
+function renderProjects() {
+  projects.forEach(function(project) {
+    const card = createElement("article", "project-card");
+
+    const title = createElement("h3", "", project.title);
+    const description = createElement("p", "", project.description);
+    const status = createElement("p", "project-status", project.status);
+    const technology = createElement(
+      "p",
+      "project-tech",
+      "Built with: " + project.technology
+    );
+
+    card.append(title, description, status, technology);
+    projectsList.appendChild(card);
+  });
+}
+
+
+
+function renderGoals() {
+  goalsList.replaceChildren();
+
+  goals.forEach(function(goal, index) {
+    const label = createElement("label", "goal-item");
+
+    const checkbox = createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = goal.completed;
+
+    const text = createElement("span", "", goal.text);
+
+    label.append(checkbox, text);
+    goalsList.appendChild(label);
+
+    checkbox.addEventListener("change", function() {
+      goals[index].completed = checkbox.checked;
+      updateGoalProgress();
+    });
+  });
+
+  updateGoalProgress();
+}
+
+
+
+
+function updateGoalProgress() {
+  const completedCount = goals.filter(function(goal) {
+    return goal.completed;
+  }).length;
+
+  const totalGoals = goals.length;
+
+  const percentage = totalGoals === 0
+    ? 0
+    : Math.round((completedCount / totalGoals) * 100);
+
+  goalPercent.textContent = percentage + "%";
+
+  goalSummary.textContent =
+    completedCount + " of " + totalGoals + " goals complete.";
+
+  
