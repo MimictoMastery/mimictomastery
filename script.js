@@ -237,4 +237,113 @@ function updateGoalProgress() {
   goalSummary.textContent =
     completedCount + " of " + totalGoals + " goals complete.";
 
-  
+  goalRing.style.background =
+    "conic-gradient(#3478C7 " +
+    percentage +
+    "%, #30303D " +
+    percentage +
+    "%)";
+}
+
+
+
+function renderLessons() {
+  lessons.forEach(function(lesson) {
+    const card = createElement("article", "lesson-card");
+
+    const title = createElement("h3", "", lesson.topic);
+    const takeaway = createElement("p", "", lesson.takeaway);
+
+    card.append(title, takeaway);
+    lessonsList.appendChild(card);
+  });
+}
+
+
+
+
+function renderSocialLinks() {
+  socials.forEach(function(social) {
+    const link = createElement("a", "social-link", social.name);
+
+    link.href = social.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    socialLinks.appendChild(link);
+  });
+}
+
+
+
+
+function renderPosts() {
+  posts.forEach(function(post, index) {
+    const button = createElement("button", "post-card");
+
+    button.type = "button";
+
+    const title = createElement("h3", "", post.title);
+    const meta = createElement(
+      "p",
+      "meta",
+      post.date + " · " + post.category
+    );
+
+    button.append(title, meta);
+
+    button.addEventListener("click", function() {
+      openPost(index);
+    });
+
+    postsList.appendChild(button);
+  });
+}
+
+
+
+function openPost(index) {
+  const post = posts[index];
+
+  if (!post) {
+    return;
+  }
+
+  readerMeta.textContent = post.date + " · " + post.category;
+  readerTitle.textContent = post.title;
+
+  readerBody.replaceChildren();
+
+  post.body.forEach(function(paragraph) {
+    const p = createElement("p", "", paragraph);
+    readerBody.appendChild(p);
+  });
+
+  blogReader.classList.remove("hidden");
+
+  backButton.focus();
+}
+
+
+
+backButton.addEventListener("click", function() {
+  blogReader.classList.add("hidden");
+});
+
+youtubeButton.href = "https://www.youtube.com/";
+githubButton.href = "https://github.com/MimictoMastery";
+
+youtubeButton.target = "_blank";
+githubButton.target = "_blank";
+
+youtubeButton.rel = "noopener noreferrer";
+githubButton.rel = "noopener noreferrer";
+
+
+
+renderActivities();
+renderProjects();
+renderGoals();
+renderLessons();
+renderSocialLinks();
+renderPosts();
