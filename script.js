@@ -26,7 +26,8 @@ const githubButton = document.getElementById("github-button");
 const currentActivities = [
   "Learning JavaScript",
   "Building my portfolio",
-  "Practicing Git and GitHub"
+  "Practicing Git and GitHub",
+  
 ];
 
 
