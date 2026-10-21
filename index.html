@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mimic to Mastery</title>
 
-
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=VT323&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+
   <div class="wrap">
     <header class="top">
       <a href="#" class="logo px">mimic<b>to</b>mastery</a>
@@ -19,12 +19,20 @@
     </header>
 
     <main class="bento">
+
       <section class="tile s4 hero">
-        <div class="lbl px">If you have ever simultaneoussly felt like you are too much and not enough,
-            stay a while, you belong here...
+        <div class="lbl px">
+          If you have ever simultaneously felt like you are too much and not enough,
+          stay a while. You belong here...
         </div>
+
         <h1>Mimic to Mastery</h1>
-        <p class="lead">Learning to code, breaking the boundaries I was handed as a kid, and taking my life back, one commit at a time.</p>
+
+        <p class="lead">
+          Learning to code, breaking the boundaries I was handed as a kid,
+          and taking my life back, one commit at a time.
+        </p>
+
         <div class="btns">
           <a class="btn main" href="#" id="youtube-button">Watch on YouTube</a>
           <a class="btn" href="https://github.com/MimictoMastery" id="github-button">View GitHub</a>
@@ -36,6 +44,16 @@
         <ul id="now-list"></ul>
       </section>
 
+      <section class="tile s2 daily-quote">
+        <div class="lbl px">DAILY DOSE OF DOPAMINE</div>
+
+        <blockquote id="daily-quote">
+          Loading today's inspiration...
+        </blockquote>
+
+        <p id="quote-author"></p>
+      </section>
+
       <section class="tile s3">
         <div class="lbl px">WORKS IN PROGRESS</div>
         <div id="projects-list"></div>
@@ -43,17 +61,26 @@
 
       <section class="tile s3">
         <div class="lbl px">LIFE GOALS</div>
+
         <div class="gtop">
-          <div class="ring" id="goal-ring"><div class="px" id="goal-percent">0%</div></div>
+          <div class="ring" id="goal-ring">
+            <div class="px" id="goal-percent">0%</div>
+          </div>
+
           <p id="goal-summary">0 goals complete. Tap to check one off.</p>
         </div>
+
         <div id="goals-list"></div>
       </section>
 
       <section class="tile s2">
         <div class="lbl px">THE STORYTELLER</div>
         <h3>Appalachian roots</h3>
-        <p>Before code, I told stories: oral tradition, workshops for kids, and a lot of porch-swing wisdom. It shapes how I teach and build.</p>
+
+        <p>
+          Before code, I told stories: oral tradition, workshops for kids,
+          and a lot of porch-swing wisdom. It shapes how I teach and build.
+        </p>
       </section>
 
       <section class="tile s2">
@@ -63,7 +90,9 @@
 
       <section class="tile s2">
         <div class="lbl px">CONNECT</div>
+
         <p>Hiring, collaborating, or starting over yourself? Say hello.</p>
+
         <div class="links" id="social-links"></div>
       </section>
 
@@ -71,22 +100,25 @@
         <div class="lbl px">THE BLOG</div>
         <div id="posts-list"></div>
       </section>
+
     </main>
 
-    <footer>Built with HTML, CSS + JavaScript · Rooted in Appalachia · © 2026</footer>
+    <footer>
+      Built with HTML, CSS + JavaScript · Rooted in Appalachia · © 2026
+    </footer>
   </div>
 
   <!-- The blog reader starts hidden. JavaScript shows it when a post is clicked. -->
   <section class="reader hidden" id="blog-reader" aria-label="Blog post">
     <div class="reader-inner">
-      <button class="btn" id="back-button">← Back</button>
+      <button class="btn" id="back-button" type="button">← Back</button>
+
       <div class="meta" id="reader-meta"></div>
       <h2 id="reader-title"></h2>
       <div id="reader-body"></div>
     </div>
   </section>
 
- 
   <script src="script.js"></script>
 </body>
 </html>

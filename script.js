@@ -1,6 +1,4 @@
 
-
-
 const nowList = document.getElementById("now-list");
 const projectsList = document.getElementById("projects-list");
 const goalsList = document.getElementById("goals-list");
@@ -21,16 +19,11 @@ const readerBody = document.getElementById("reader-body");
 const youtubeButton = document.getElementById("youtube-button");
 const githubButton = document.getElementById("github-button");
 
-
-
 const currentActivities = [
   "Learning JavaScript",
   "Building my portfolio",
-  "Practicing Git and GitHub",
-  
+  "Practicing Git and GitHub"
 ];
-
-
 
 const projects = [
   {
@@ -53,7 +46,6 @@ const projects = [
   }
 ];
 
-
 const goals = [
   {
     text: "Finish my portfolio website",
@@ -73,8 +65,6 @@ const goals = [
   }
 ];
 
-
-
 const lessons = [
   {
     topic: "HTML",
@@ -89,9 +79,6 @@ const lessons = [
     takeaway: "JavaScript adds behavior and interaction."
   }
 ];
-
-
-
 
 const socials = [
   {
@@ -111,9 +98,6 @@ const socials = [
     url: "https://www.facebook.com/"
   }
 ];
-
-
-
 
 const posts = [
   {
@@ -147,7 +131,6 @@ const posts = [
   }
 ];
 
-
 function createElement(tagName, className, text) {
   const element = document.createElement(tagName);
 
@@ -162,18 +145,12 @@ function createElement(tagName, className, text) {
   return element;
 }
 
-
-
-
 function renderActivities() {
   currentActivities.forEach(function(activity) {
     const item = createElement("li", "", activity);
     nowList.appendChild(item);
   });
 }
-
-
-
 
 function renderProjects() {
   projects.forEach(function(project) {
@@ -192,8 +169,6 @@ function renderProjects() {
     projectsList.appendChild(card);
   });
 }
-
-
 
 function renderGoals() {
   goalsList.replaceChildren();
@@ -219,9 +194,6 @@ function renderGoals() {
   updateGoalProgress();
 }
 
-
-
-
 function updateGoalProgress() {
   const completedCount = goals.filter(function(goal) {
     return goal.completed;
@@ -246,8 +218,6 @@ function updateGoalProgress() {
     "%)";
 }
 
-
-
 function renderLessons() {
   lessons.forEach(function(lesson) {
     const card = createElement("article", "lesson-card");
@@ -260,9 +230,6 @@ function renderLessons() {
   });
 }
 
-
-
-
 function renderSocialLinks() {
   socials.forEach(function(social) {
     const link = createElement("a", "social-link", social.name);
@@ -274,9 +241,6 @@ function renderSocialLinks() {
     socialLinks.appendChild(link);
   });
 }
-
-
-
 
 function renderPosts() {
   posts.forEach(function(post, index) {
@@ -301,8 +265,6 @@ function renderPosts() {
   });
 }
 
-
-
 function openPost(index) {
   const post = posts[index];
 
@@ -321,11 +283,8 @@ function openPost(index) {
   });
 
   blogReader.classList.remove("hidden");
-
   backButton.focus();
 }
-
-
 
 backButton.addEventListener("click", function() {
   blogReader.classList.add("hidden");
@@ -340,11 +299,48 @@ githubButton.target = "_blank";
 youtubeButton.rel = "noopener noreferrer";
 githubButton.rel = "noopener noreferrer";
 
-
-
 renderActivities();
 renderProjects();
 renderGoals();
 renderLessons();
 renderSocialLinks();
 renderPosts();
+
+
+async function showDailyQuote() {
+  const quoteElement = document.getElementById("daily-quote");
+  const authorElement = document.getElementById("quote-author");
+
+  if (!quoteElement || !authorElement) {
+    return;
+  }
+
+  try {
+    const response = await fetch("quotes.json");
+
+    if (!response.ok) {
+      throw new Error("Could not load quotes.json");
+    }
+
+    const quotes = await response.json();
+
+    if (!Array.isArray(quotes) || quotes.length === 0) {
+      throw new Error("No quotes found.");
+    }
+
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const randomQuote = quotes[randomIndex];
+
+    quoteElement.textContent = '"' + randomQuote.quote + '"';
+    authorElement.textContent = "— " + randomQuote.author;
+  } catch (error) {
+    console.error("Daily quote error:", error);
+
+    quoteElement.textContent =
+      "Every small step is progress. Keep going!";
+
+    authorElement.textContent = "— Mimic to Mastery";
+  }
+}
+
+showDailyQuote();
