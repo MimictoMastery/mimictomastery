@@ -4,121 +4,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mimic to Mastery</title>
+  <meta name="theme-color" content="#050817">
+  <meta name="description" content="Mimic to Mastery — learning to code, telling stories, and building something new one commit at a time.">
 
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=VT323&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <title>Mimic to Mastery | My Coding Journey</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=VT323&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
 </head>
+
 <body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
 
   <div class="wrap">
-    <header class="top">
-      <a href="#" class="logo px">mimic<b>to</b>mastery</a>
-      <span class="badge px">PRESS START</span>
+    <header class="top glass">
+      <a href="#home" class="logo">mimic<span>to</span>mastery</a>
+
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#snippets">Code Lab</a>
+        <a href="#arcade">Arcade</a>
+        <a href="#blog">Blog</a>
+      </nav>
+
+      <span class="badge"><span class="status-dot"></span> PRESS START</span>
     </header>
 
-    <main class="bento">
+    <main id="home" class="bento">
 
-      <section class="tile s4 hero">
-        <div class="lbl px">
-          If you have ever simultaneously felt like you are too much and not enough,
-          stay a while. You belong here...
-        </div>
+      <!-- HERO -->
+      <section class="tile hero glass span-4">
+        <div class="eyebrow">A WORK IN PROGRESS — JUST LIKE ME</div>
 
-        <h1>Mimic to Mastery</h1>
+        <h1>Mimic to <span class="gradient-text">Mastery</span></h1>
 
         <p class="lead">
+          If you have ever simultaneously felt like you are too much
+          and not enough, stay a while. You belong here.
+        </p>
+
+        <p>
           Learning to code, breaking the boundaries I was handed as a kid,
           and taking my life back, one commit at a time.
         </p>
 
         <div class="btns">
-          <a class="btn main" href="#" id="youtube-button">Watch on YouTube</a>
-          <a class="btn" href="https://github.com/MimictoMastery" id="github-button">View GitHub</a>
+          <a class="btn btn-primary" href="#projects">Explore my projects ↗</a>
+          <a class="btn" href="https://github.com/MimictoMastery"
+             target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
+        </div>
+
+        <div class="hero-terminal">
+          <span class="terminal-prompt">visitor@mastery:~$</span>
+          <span id="terminal-message">building something meaningful...</span>
+          <span class="cursor" aria-hidden="true"></span>
         </div>
       </section>
 
-      <section class="tile s2 now">
-        <div class="lbl px">NOW</div>
-        <ul id="now-list"></ul>
+      <!-- CURRENTLY LEARNING -->
+      <section class="tile glass span-2">
+        <div class="lbl">01 / RIGHT NOW</div>
+        <h2 class="section-title">Currently learning</h2>
+        <ul id="now-list" class="activity-list"></ul>
       </section>
 
-      <section class="tile s2 daily-quote">
-        <div class="lbl px">DAILY DOSE OF DOPAMINE</div>
-
-        <blockquote id="daily-quote">
-          Loading today's inspiration...
-        </blockquote>
-
-        <p id="quote-author"></p>
+      <!-- DAILY QUOTE -->
+      <section class="tile glass span-2">
+        <div class="lbl">02 / DAILY DOPAMINE</div>
+        <div class="quote-mark">“</div>
+        <blockquote id="daily-quote">Every small step is progress.</blockquote>
+        <p id="quote-author" class="quote-author">— Mimic to Mastery</p>
+        <button class="text-button" id="new-quote-button" type="button">
+          Another dose ↻
+        </button>
       </section>
 
-      <section class="tile s3">
-        <div class="lbl px">WORKS IN PROGRESS</div>
-        <div id="projects-list"></div>
+      <!-- PROJECTS -->
+      <section class="tile glass span-3" id="projects">
+        <div class="lbl">03 / WORKS IN PROGRESS</div>
+        <h2 class="section-title">Things I'm building</h2>
+        <div id="projects-list" class="stack-list"></div>
       </section>
 
-      <section class="tile s3">
-        <div class="lbl px">LIFE GOALS</div>
+      <!-- GOALS -->
+      <section class="tile glass span-3" id="goals">
+        <div class="lbl">04 / SMALL STEPS, BIG DREAMS</div>
+        <h2 class="section-title">Life goals</h2>
 
-        <div class="gtop">
-          <div class="ring" id="goal-ring">
-            <div class="px" id="goal-percent">0%</div>
+        <div class="goal-overview">
+          <div class="ring" id="goal-ring" role="img"
+               aria-label="0 percent of goals completed">
+            <div class="ring-inner">
+              <span id="goal-percent">0%</span>
+            </div>
           </div>
-
-          <p id="goal-summary">0 goals complete. Tap to check one off.</p>
+          <p id="goal-summary" aria-live="polite">0 of 4 goals complete.</p>
         </div>
 
-        <div id="goals-list"></div>
+        <div id="goals-list" class="goals-list"></div>
       </section>
 
-      <section class="tile s2">
-        <div class="lbl px">THE STORYTELLER</div>
-        <h3>Appalachian roots</h3>
-
+      <!-- STORYTELLER -->
+      <section class="tile glass span-2">
+        <div class="lbl">05 / ROOTED IN STORY</div>
+        <h2 class="section-title">Appalachian roots</h2>
         <p>
-          Before code, I told stories: oral tradition, workshops for kids,
-          and a lot of porch-swing wisdom. It shapes how I teach and build.
+          Before code, I told stories: oral traditions, workshops for kids,
+          and a lot of porch-swing wisdom. Storytelling still shapes how I
+          teach, create, and build.
         </p>
       </section>
 
-      <section class="tile s2">
-        <div class="lbl px">TODAY I LEARNED</div>
-        <div id="lessons-list"></div>
+      <!-- LESSONS -->
+      <section class="tile glass span-2">
+        <div class="lbl">06 / KNOWLEDGE UNLOCKED</div>
+        <h2 class="section-title">Today I learned</h2>
+        <div id="lessons-list" class="stack-list"></div>
       </section>
 
-      <section class="tile s2">
-        <div class="lbl px">CONNECT</div>
-
-        <p>Hiring, collaborating, or starting over yourself? Say hello.</p>
-
-        <div class="links" id="social-links"></div>
+      <!-- CONNECT -->
+      <section class="tile glass span-2">
+        <div class="lbl">07 / FIND ME ONLINE</div>
+        <h2 class="section-title">Let's connect</h2>
+        <p>Hiring, collaborating, or learning alongside me? Say hello.</p>
+        <div id="social-links" class="social-links"></div>
       </section>
 
-      <section class="tile s6">
-        <div class="lbl px">THE BLOG</div>
-        <div id="posts-list"></div>
+      <!-- ROTATING CODE SNIPPETS -->
+      <section class="tile glass span-6" id="snippets">
+        <div class="lbl">08 / THE CODE LAB</div>
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-title">A little code magic</h2>
+            <p class="muted">
+              One small snippet. One new thing to understand.
+            </p>
+          </div>
+          <span class="live-tag"><span class="status-dot"></span> PRACTICE MODE</span>
+        </div>
+
+        <div class="snippet-card">
+          <div class="snippet-topbar">
+            <div class="window-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <span id="snippet-language" class="snippet-language">JavaScript</span>
+            <span id="snippet-counter" class="snippet-counter">01 / 08</span>
+          </div>
+
+          <div class="snippet-content">
+            <h3 id="snippet-title">Your next coding lesson</h3>
+            <p id="snippet-description" class="muted"></p>
+
+            <pre class="code-window"><code id="snippet-code"></code></pre>
+
+            <div class="snippet-explanation">
+              <span class="explanation-icon">✦</span>
+              <p id="snippet-explanation"></p>
+            </div>
+          </div>
+
+          <div class="snippet-actions">
+            <button class="btn btn-primary" id="next-snippet-button"
+                    type="button">Next snippet →</button>
+            <button class="btn" id="copy-snippet-button"
+                    type="button">Copy code</button>
+          </div>
+          <p id="snippet-feedback" class="feedback" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <!-- CODE QUEST ARCADE -->
+      <section class="tile arcade-tile glass span-6" id="arcade">
+        <div class="arcade-grid" aria-hidden="true"></div>
+
+        <div class="arcade-content">
+          <div class="lbl">09 / BONUS LEVEL UNLOCKED?</div>
+          <div class="arcade-title-row">
+            <div>
+              <p class="arcade-kicker">INSERT COIN TO CONTINUE</p>
+              <h2 class="arcade-title">CODE QUEST <span>ARCADE</span></h2>
+            </div>
+            <div class="pixel-icon" aria-hidden="true">★</div>
+          </div>
+
+          <p class="arcade-description">
+            Where practice becomes play. Enter the arcade, solve coding
+            challenges, earn XP, and level up your developer skills.
+          </p>
+
+          <div class="arcade-stats">
+            <div class="arcade-stat">
+              <span class="stat-number">01</span>
+              <span class="stat-label">STARTING LEVEL</span>
+            </div>
+            <div class="arcade-stat">
+              <span class="stat-number">∞</span>
+              <span class="stat-label">ROOM TO GROW</span>
+            </div>
+            <div class="arcade-stat">
+              <span class="stat-number">XP</span>
+              <span class="stat-label">EARNED BY LEARNING</span>
+            </div>
+          </div>
+
+          <a id="arcade-launch" class="btn btn-arcade"
+             href="./code-quest-arcade/index.html">
+            ▶ ENTER THE ARCADE
+          </a>
+
+          <p id="arcade-note" class="muted arcade-note">
+            Connect your Code Quest Arcade game using the link in script.js.
+          </p>
+        </div>
+      </section>
+
+      <!-- BLOG -->
+      <section class="tile glass span-6" id="blog">
+        <div class="lbl">10 / NOTES FROM THE JOURNEY</div>
+        <h2 class="section-title">The blog</h2>
+        <p class="muted">Lessons, stories, setbacks, and little victories.</p>
+        <div id="posts-list" class="post-grid"></div>
+
+        <article id="blog-reader" class="blog-reader hidden"
+                 aria-label="Blog post" aria-live="polite">
+          <button class="btn" id="back-button" type="button">← Back to posts</button>
+          <p id="reader-meta" class="meta"></p>
+          <h3 id="reader-title"></h3>
+          <div id="reader-body"></div>
+        </article>
       </section>
 
     </main>
 
-    <footer>
-      Built with HTML, CSS + JavaScript · Rooted in Appalachia · © 2026
+    <footer class="site-footer">
+      <p>Built with curiosity, HTML, CSS & JavaScript.</p>
+      <p>Rooted in Appalachia. Growing one commit at a time. © 2026</p>
+      <a href="#home">Back to the top ↑</a>
     </footer>
   </div>
-
-  <!-- The blog reader starts hidden. JavaScript shows it when a post is clicked. -->
-  <section class="reader hidden" id="blog-reader" aria-label="Blog post">
-    <div class="reader-inner">
-      <button class="btn" id="back-button" type="button">← Back</button>
-
-      <div class="meta" id="reader-meta"></div>
-      <h2 id="reader-title"></h2>
-      <div id="reader-body"></div>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
 </body>
 </html>
