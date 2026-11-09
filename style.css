@@ -1,7 +1,7 @@
 
 /* =====================================================
    MIMIC TO MASTERY
-   Glassmorphism + Neon Glow + Retro Arcade
+   Glassmorphism (becouse glassmorphism sounds impressive)+ Neon Glow + Retro Arcade
    ===================================================== */
 
 :root {
@@ -75,9 +75,9 @@ input:focus-visible {
   background: #6344c7;
 }
 
-/* Background lighting */
+/* ambient(isn't this such a fun word!!) lighting */
 
-.ambient {
+.ambient-glow {
   position: fixed;
   z-index: -1;
   width: 300px;
@@ -88,21 +88,22 @@ input:focus-visible {
   pointer-events: none;
 }
 
-.ambient-one {
+.background-cyan {
   top: 20%;
   left: -160px;
   background: var(--cyan);
 }
 
-.ambient-two {
+.background-purple {
   right: -150px;
   bottom: 10%;
   background: var(--pink);
 }
 
-/* Main layout */
+/* Main layout so I feel like it 
+should be Mimic to Mastery, for now. */
 
-.wrap {
+.mimictomastery {
   width: min(1200px, calc(100% - 40px));
   margin: 0 auto;
   padding: 24px 0 16px;
@@ -241,7 +242,7 @@ input:focus-visible {
 /* Typography */
 
 .lbl,
-.eyebrow {
+.progress {
   margin-bottom: 14px;
   color: var(--cyan);
   font: 11px "JetBrains Mono", monospace;
@@ -291,15 +292,29 @@ p {
   line-height: 1.08;
 }
 
-.hero .lead {
+
+.hero .toomuch {
   max-width: 650px;
   margin-bottom: 12px;
-  color: #e3ebff;
-  font-size: 19px;
+  font-size: 28px;
   line-height: 1.6;
+  font-family: "Moon Dance", cursive;
+
+  background: linear-gradient(
+    90deg,
+    var(--cyan),
+    var(--pink),
+    #a855f7
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-.hero > p:not(.lead) {
+
+.hero > p:not(.toomuch) {
   max-width: 600px;
 }
 
