@@ -292,27 +292,17 @@ p {
   line-height: 1.08;
 }
 
-
 .hero .toomuch {
   max-width: 650px;
   margin-bottom: 12px;
   font-size: 28px;
   line-height: 1.6;
   font-family: "Moon Dance", cursive;
-
-  background: linear-gradient(
-    90deg,
-    var(--cyan),
-    var(--pink),
-    #a855f7
-  );
-
+  background: linear-gradient(90deg, var(--cyan), var(--pink), #a855f7);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
 }
-
 
 .hero > p:not(.toomuch) {
   max-width: 600px;
@@ -366,6 +356,7 @@ p {
   background: linear-gradient(110deg, white, var(--cyan));
 }
 
+/*
 .hero-terminal {
   display: flex;
   flex-wrap: wrap;
@@ -391,6 +382,65 @@ p {
 
 @keyframes blink {
   to { visibility: hidden; }
+}
+  */
+
+/* Hero terminal */
+
+.hero-terminal {
+  position: relative;
+  overflow: hidden;
+  margin-top: 30px;
+  padding: 16px 18px;
+  border: 1px solid rgba(66, 237, 255, 0.23);
+  border-radius: 12px;
+  background: rgba(3, 8, 22, 0.57);
+  color: var(--cyan);
+  font: 20px/1.4 "VT323", monospace;
+  text-shadow: 0 0 8px rgba(66, 237, 255, 0.35);
+}
+
+/* CRT scanlines */
+.hero-terminal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.terminal-prompt {
+  color: var(--green);
+}
+
+.terminal-result {
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background: var(--cyan);
+  vertical-align: text-bottom;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 }
 
 /* Activity list */
@@ -571,7 +621,10 @@ p {
 }
 
 .social-link {
-  padding: 7px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 7px;
   background: rgba(255, 255, 255, 0.03);

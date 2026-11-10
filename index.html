@@ -10,6 +10,9 @@
 
   <title>Mimic to Mastery</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=VT323&family=JetBrains+Mono:wght@400;600&family=Moon+Dance&display=swap" rel="stylesheet">
@@ -17,6 +20,8 @@
 
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -58,10 +63,14 @@
              target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
         </div>
 
-        <div class="hero-terminal">
-          <span class="terminal-prompt">visitor@mastery:~$</span>
-          <span id="terminal-message">building something meaningful...</span>
-          <span class="cursor" aria-hidden="true"></span>
+               <div class="hero-terminal">
+          <p class="sr-only">Mimic to Mastery: learning out loud, building something meaningful.</p>
+          <div id="terminal-output" aria-hidden="true"></div>
+          <div aria-hidden="true">
+            <span class="terminal-prompt">visitor@mastery:~$</span>
+            <span id="terminal-message"></span>
+            <span class="cursor"></span>
+          </div>
         </div>
       </section>
 

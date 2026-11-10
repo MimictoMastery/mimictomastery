@@ -4,10 +4,6 @@
 // Portfolio, Code Lab, Goals, Blog, and Arcade
 // =====================================================
 
-// -----------------------------------------------------
-// CONFIGURATION
-// -----------------------------------------------------
-
 const SITE_CONFIG = {
   github: "https://github.com/MimictoMastery",
 
@@ -129,19 +125,28 @@ const lessons = [
 const socials = [
   {
     name: "GitHub",
-    url: SITE_CONFIG.github
+    url: "https://github.com/MimictoMastery",
+    icon: "fa-github"
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/heather-lawson-dev/",
+    icon: "fa-linkedin"
   },
   {
     name: "YouTube",
-    url: SITE_CONFIG.youtube
+    url: "https://www.youtube.com/@mimictomastery",
+    icon: "fa-youtube"
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/"
+    url: "https://www.instagram.com/YOUR-HANDLE/",
+    icon: "fa-instagram"
   },
   {
     name: "Facebook",
-    url: "https://www.facebook.com/"
+    url: "https://www.facebook.com/MimicToMastery",
+    icon: "fa-facebook"
   }
 ];
 
@@ -591,7 +596,7 @@ function renderLessons() {
 }
 
 // -----------------------------------------------------
-// RENDER SOCIAL LINKS
+// All The Socail Stuff
 // -----------------------------------------------------
 
 function renderSocialLinks() {
@@ -601,16 +606,74 @@ function renderSocialLinks() {
   list.replaceChildren();
 
   socials.forEach(social => {
-    const link = createElement("a", "social-link", social.name);
+    const link = createElement("a", "social-link");
+    const icon = createElement("i", "fa-brands " + social.icon);
+
+    icon.setAttribute("aria-hidden", "true");
 
     link.href = social.url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
+    link.append(icon, " " + social.name);
 
     list.appendChild(link);
   });
 }
+// -----------------------------------------------------
+// HERO TERMINAL
+// -----------------------------------------------------
 
+const terminalScript = [
+  { command: "whoami", result: "mimic — learning out loud" },
+  { command: "cat origin.txt", result: "started by copying. kept going until it was mine." },
+  { command: "./mimic --evolve", result: "mimic -> mastery [########] 100%" },
+  { command: "ls ~/", result: "projects/  snippets/  arcade/  blog/" }
+];
+
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function typeText(element, text, speed = 45) {
+  if (prefersReducedMotion) {
+    element.textContent = text;
+    return;
+  }
+
+  for (const character of text) {
+    element.textContent += character;
+    await sleep(speed);
+  }
+}
+
+async function runTerminal() {
+  const output = document.getElementById("terminal-output");
+  const finalMessage = document.getElementById("terminal-message");
+
+  if (!output || !finalMessage) return;
+
+  output.replaceChildren();
+
+  for (const step of terminalScript) {
+    const line = createElement("div");
+    const prompt = createElement("span", "terminal-prompt", "mimic@mastery:~$");
+    const command = createElement("span");
+
+    line.append(prompt, " ", command);
+    output.appendChild(line);
+
+    await typeText(command, step.command);
+
+    output.appendChild(createElement("div", "terminal-result", step.result));
+    await sleep(prefersReducedMotion ? 0 : 500);
+  }
+
+  await typeText(finalMessage, "building something meaningful...");
+}
 // -----------------------------------------------------
 // BLOG
 // -----------------------------------------------------
@@ -687,10 +750,7 @@ function configureArcade() {
   if (!launch || !note) return;
 
   launch.href = SITE_CONFIG.arcade;
-
-  note.textContent =
-    "Launch destination: " + SITE_CONFIG.arcade +
-    ". Update SITE_CONFIG.arcade when your game is hosted elsewhere.";
+  note.textContent = "Built with JavaScript, Express, and SQLite.";
 }
 
 // -----------------------------------------------------
@@ -704,6 +764,7 @@ function init() {
   renderLessons();
   renderSocialLinks();
   renderPosts();
+  runTerminal();
 
   chooseInitialSnippet();
   renderSnippet();
